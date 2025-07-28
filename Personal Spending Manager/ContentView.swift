@@ -5,17 +5,14 @@
 //  Created by Adrian Cooper on 28/07/2025.
 //
 
+
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        Text("Hello, World!")
+            .font(.title)
+            .padding()
     }
 }
 

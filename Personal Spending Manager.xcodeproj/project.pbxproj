@@ -29,20 +29,42 @@
 		5D4A22B42E37D68200F36B57 /* Personal Spending ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Personal Spending ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5D4A22D02E37D79C00F36B57 /* Exceptions for "Personal Spending Manager" folder in "Personal Spending Manager" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Tests/Personal Spending ManagerTests/Personal_Spending_ManagerTests.swift",
+				"Tests/Personal Spending ManagerUITests/Personal_Spending_ManagerUITests.swift",
+				"Tests/Personal Spending ManagerUITests/Personal_Spending_ManagerUITestsLaunchTests.swift",
+			);
+			target = 5D4A229B2E37D68200F36B57 /* Personal Spending Manager */;
+		};
+		5D4A22D12E37D79C00F36B57 /* Exceptions for "Personal Spending Manager" folder in "Personal Spending ManagerTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Tests/Personal Spending ManagerTests/Personal_Spending_ManagerTests.swift",
+			);
+			target = 5D4A22A92E37D68200F36B57 /* Personal Spending ManagerTests */;
+		};
+		5D4A22D72E37D79D00F36B57 /* Exceptions for "Personal Spending Manager" folder in "Personal Spending ManagerUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Tests/Personal Spending ManagerUITests/Personal_Spending_ManagerUITests.swift",
+				"Tests/Personal Spending ManagerUITests/Personal_Spending_ManagerUITestsLaunchTests.swift",
+			);
+			target = 5D4A22B32E37D68200F36B57 /* Personal Spending ManagerUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5D4A229E2E37D68200F36B57 /* Personal Spending Manager */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5D4A22D02E37D79C00F36B57 /* Exceptions for "Personal Spending Manager" folder in "Personal Spending Manager" target */,
+				5D4A22D12E37D79C00F36B57 /* Exceptions for "Personal Spending Manager" folder in "Personal Spending ManagerTests" target */,
+				5D4A22D72E37D79D00F36B57 /* Exceptions for "Personal Spending Manager" folder in "Personal Spending ManagerUITests" target */,
+			);
 			path = "Personal Spending Manager";
-			sourceTree = "<group>";
-		};
-		5D4A22AD2E37D68200F36B57 /* Personal Spending ManagerTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Personal Spending ManagerTests";
-			sourceTree = "<group>";
-		};
-		5D4A22B72E37D68200F36B57 /* Personal Spending ManagerUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Personal Spending ManagerUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,8 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				5D4A229E2E37D68200F36B57 /* Personal Spending Manager */,
-				5D4A22AD2E37D68200F36B57 /* Personal Spending ManagerTests */,
-				5D4A22B72E37D68200F36B57 /* Personal Spending ManagerUITests */,
 				5D4A229D2E37D68200F36B57 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +150,6 @@
 			dependencies = (
 				5D4A22AC2E37D68200F36B57 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				5D4A22AD2E37D68200F36B57 /* Personal Spending ManagerTests */,
-			);
 			name = "Personal Spending ManagerTests";
 			packageProductDependencies = (
 			);
@@ -152,9 +169,6 @@
 			);
 			dependencies = (
 				5D4A22B62E37D68200F36B57 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				5D4A22B72E37D68200F36B57 /* Personal Spending ManagerUITests */,
 			);
 			name = "Personal Spending ManagerUITests";
 			packageProductDependencies = (
@@ -405,8 +419,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -444,8 +457,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
