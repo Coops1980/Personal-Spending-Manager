@@ -33,6 +33,16 @@ class TripFileStore: ObservableObject {
         saveFiles()
     }
     
+    func editFile(_ updatedFile: TripFileAttachment) {
+        guard let index = files.firstIndex(where: { $0.id == updatedFile.id }) else {
+            print("Edit failed: file not found")
+            return
+        }
+
+        files[index] = updatedFile
+        saveFiles()
+    }
+
     // MARK: - Persistence
     
     private func loadFiles() {

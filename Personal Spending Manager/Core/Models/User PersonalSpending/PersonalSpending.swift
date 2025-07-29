@@ -8,32 +8,35 @@ import Foundation
 
 struct PersonalSpending: Identifiable, Codable, Equatable {
     var id = UUID()
+    var date: Date
     var item: String
     var amount: Double
-    var date: Date
     var location: String
     var category: String
     var account: String
     var photoFilename: String? = nil
+    var misc: String
 
     // ✅ Custom Initializer
     init(
         id: UUID = UUID(),
+        date: Date = Date(),
         item: String,
         amount: Double,
-        date: Date = Date(),
         location: String = "",
         category: String = "",
         account: String = "",
-        photoFilename: String? = nil
+        photoFilename: String? = nil,
+        misc: String
     ) {
         self.id = id
+        self.date = date
         self.item = item
         self.amount = amount
-        self.date = date
         self.location = location
         self.category = category
         self.account = account
         self.photoFilename = photoFilename
+        self.misc = misc
     }
 }

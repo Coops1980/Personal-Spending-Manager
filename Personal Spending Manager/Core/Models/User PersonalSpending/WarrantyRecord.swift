@@ -14,5 +14,5 @@ struct WarrantyRecord: Codable, Identifiable {
     var purchaseDate: Date
     var expiryDate: Date
     var notes: String
-    var fileURL: URL? // optional warranty file (PDF/image)
+    var fileURL: URL?                // optional warranty file (PDF/image)
 }
