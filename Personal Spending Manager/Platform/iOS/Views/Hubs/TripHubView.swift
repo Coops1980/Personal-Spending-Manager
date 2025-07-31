@@ -11,7 +11,7 @@ import SwiftUI
 struct TripHubView: View {
     @EnvironmentObject var navigationManager: NavigationManager
 
-// MARK: Buttons, Icons and routing
+// MARK: - Buttons, Icons and routing
     let items: [(label: String, icon: String, screen: AppScreen)] = [
         ("Edit Trip", "aeroplane.fill", .settings)                  //To be changed when trips are made
         
@@ -23,7 +23,7 @@ struct TripHubView: View {
         GridItem(.flexible())
     ]
 
-// MARK: Main Body
+// MARK: - Main Body
 
     var body: some View {
         VStack {

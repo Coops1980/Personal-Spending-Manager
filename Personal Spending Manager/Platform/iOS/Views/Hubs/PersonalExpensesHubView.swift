@@ -11,7 +11,7 @@ import SwiftUI
 struct PersonalExpensesHub: View {
     @EnvironmentObject var navigationManager: NavigationManager
 
-// MARK: Buttons, Icons and routing
+// MARK: - Buttons, Icons and routing
     let items: [(label: String, icon: String, screen: AppScreen)] = [
         ("Add Spending", "creditcard.fill", .settings),
         ("Edit Spending", "creditcard", .profile),
@@ -23,7 +23,7 @@ struct PersonalExpensesHub: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-
+// MARK: - Main Body
     var body: some View {
         VStack(spacing: 20) {
             Text("Personal Spending Hub")

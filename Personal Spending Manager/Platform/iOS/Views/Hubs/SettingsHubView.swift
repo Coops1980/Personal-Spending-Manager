@@ -11,10 +11,12 @@ import SwiftUI
 struct SettingsHub: View {
     @EnvironmentObject var navigationManager: NavigationManager
 
-// MARK: Buttons, Icons and routing
+    // MARK: - Buttons, Icons and routing
     let items: [(label: String, icon: String, screen: AppScreen)] = [
-        ("User Profile", "person.crop.circle.fill", .profile)
-                                                               
+        ("Accounts", "list.number", .accounts),
+        ("Categories", "checklist", ._category),
+        ("User Profile", "person.crop.circle", .profile)
+        
     ]
 
     let columns = [
@@ -22,13 +24,13 @@ struct SettingsHub: View {
         GridItem(.flexible())
     ]
 
-// MARK: Main Body
+    // MARK: - Main Body
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             Text("Settings")
                 .font(.largeTitle)
-                .padding()
-            
+                .padding(.top, 32)
+
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(items, id: \.label) { item in
                     IconButton(
@@ -44,6 +46,10 @@ struct SettingsHub: View {
                 }
             }
             .padding(.horizontal)
+            
+            Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.systemGroupedBackground))
     }
 }

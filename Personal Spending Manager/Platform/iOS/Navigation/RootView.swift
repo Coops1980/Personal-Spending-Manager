@@ -28,6 +28,10 @@ struct RootView: View {
                         PersonalExpensesHub()
                     case .reportsHub:
                         ReportHubView()
+                    case .accounts:
+                        AccountManagerView()
+                    case ._category:
+                        CategoryManagerView()
                     }
                 }
         }

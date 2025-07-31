@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct UserProfile: Codable {
+struct UserProfile: Codable, Equatable {
     var title: String
     var firstName: String
     var lastName: String

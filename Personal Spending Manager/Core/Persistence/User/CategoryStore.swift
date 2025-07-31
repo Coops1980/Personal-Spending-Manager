@@ -7,66 +7,53 @@
 import Foundation
 
 class CategoryStore: ObservableObject {
-    @Published var categories: [String] = []
-    
+    @Published var categories: [Category] = []
 
-    private let filename = "ExpenseCategories.json"
-    var defaultCategories = [
-        "Accomodation", "Breakfast", "Coffee", "Dinner",
-        "Entertainment", "Groceries", "Lunch", "Meals",
-        "Other", "Transport"
-    ]
+    private let storageKey = "saved_categories"
 
     init() {
         loadCategories()
     }
 
-    func addCategory(_ name: String) {
-        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty,
-              !categories.contains(where: { $0.caseInsensitiveCompare(trimmed) == .orderedSame }) else { return }
-
-        categories.append(trimmed)
+    func addCategory(_ category: Category) {
+        categories.append(category)
         saveCategories()
     }
 
-    func deleteCategory(_ category: String) {
-        categories.removeAll {
-            $0.caseInsensitiveCompare(category) == .orderedSame
-        }
-        saveCategories()
-    }
-
-    func resetToDefaults() {
-        categories = defaultCategories
-        saveCategories()
-    }
-
-    // MARK: - Persistence
-    
-    private func loadCategories() {
-        let url = getURL()
-
-        if let data = try? Data(contentsOf: url),
-           let decoded = try? JSONDecoder().decode([String].self, from: data),
-           !decoded.isEmpty {
-            categories = decoded
-        } else {
-            categories = defaultCategories
+    func updateCategory(_ updated: Category) {
+        if let index = categories.firstIndex(where: { $0.id == updated.id }) {
+            categories[index] = updated
             saveCategories()
         }
     }
 
+    func deleteCategory(_ category: Category) {
+        categories.removeAll { $0.id == category.id }
+        saveCategories()
+    }
+
     private func saveCategories() {
-        let url = getURL()
-        if let encoded = try? JSONEncoder().encode(categories) {
-            try? encoded.write(to: url)
+        if let data = try? JSONEncoder().encode(categories) {
+            UserDefaults.standard.set(data, forKey: storageKey)
         }
     }
 
-    private func getURL() -> URL {
-        FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent(filename)
+    private func loadCategories() {
+        if let data = UserDefaults.standard.data(forKey: storageKey),
+           let decoded = try? JSONDecoder().decode([Category].self, from: data) {
+            categories = decoded
+        } else {
+            categories = [
+                Category(id: UUID(), name: "Food Shopping"),
+                Category(id: UUID(), name: "Breakfast"),
+                Category(id: UUID(), name: "Lunch"),
+                Category(id: UUID(), name: "Dinner"),
+                Category(id: UUID(), name: "Coffee"),
+                Category(id: UUID(), name: "Snacks"),
+                Category(id: UUID(), name: "Groceries"),
+                Category(id: UUID(), name: "Travel"),
+                Category(id: UUID(), name: "Utilities")
+            ]
+        }
     }
 }

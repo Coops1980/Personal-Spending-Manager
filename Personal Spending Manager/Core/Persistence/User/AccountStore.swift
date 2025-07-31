@@ -7,52 +7,53 @@
 
 
 import Foundation
+import Combine
 
 class AccountStore: ObservableObject {
-    @Published var accounts: [String] = []
+    @Published var accounts: [Account] = []
 
-    private let filename = "ExpenseAccounts.json"
+    private let localStorageKey = "accountList"
 
     init() {
-        loadAccounts()
-    }
-
-    func addAccount(_ name: String) {
-        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty, !accounts.contains(where: { $0.caseInsensitiveCompare(trimmed) == .orderedSame }) else { return }
-        accounts.append(trimmed)
-        saveAccounts()
-    }
-
-    func deleteAccount(_ name: String) {
-        accounts.removeAll { $0.caseInsensitiveCompare(name) == .orderedSame }
-        saveAccounts()
-    }
-
-    // MARK: - Persistence
-    
-    private func loadAccounts() {
-        let url = getURL()
-        if let data = try? Data(contentsOf: url),
-           let decoded = try? JSONDecoder().decode([String].self, from: data),
-           !decoded.isEmpty {
-            accounts = decoded
-        } else {
-            accounts = [] // Start empty
+        self.accounts = loadAccounts()
+        if accounts.isEmpty {
+            accounts.append(Account(name: "Cash"))
             saveAccounts()
         }
     }
 
-    private func saveAccounts() {
-        let url = getURL()
-        if let encoded = try? JSONEncoder().encode(accounts) {
-            try? encoded.write(to: url)
+    func addAccount(_ account: Account) {
+        accounts.append(account)
+        saveAccounts()
+    }
+
+    func updateAccount(_ account: Account) {
+        if let index = accounts.firstIndex(where: { $0.id == account.id }) {
+            accounts[index] = account
+            saveAccounts()
         }
     }
 
-    private func getURL() -> URL {
-        FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent(filename)
+    func deleteAccount(_ account: Account) {
+        accounts.removeAll { $0.id == account.id }
+        saveAccounts()
+    }
+
+    private func saveAccounts() {
+        do {
+            let data = try JSONEncoder().encode(accounts)
+            UserDefaults.standard.set(data, forKey: localStorageKey)
+        } catch {
+            print("Error saving accounts: \(error)")
+        }
+    }
+
+    private func loadAccounts() -> [Account] {
+        guard let data = UserDefaults.standard.data(forKey: localStorageKey),
+              let decoded = try? JSONDecoder().decode([Account].self, from: data)
+        else {
+            return []
+        }
+        return decoded
     }
 }

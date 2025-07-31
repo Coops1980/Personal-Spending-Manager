@@ -15,5 +15,8 @@ enum AppScreen: Hashable {
     case tripHub
     case personalExpensesHub
     case reportsHub
+    case accounts
+    case _category
+    
     
 }

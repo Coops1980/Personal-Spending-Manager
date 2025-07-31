@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var navigationManager: NavigationManager
 
-// MARK: Buttons, Icons and routing
+// MARK: - Buttons, Icons and routing
     let items: [(label: String, icon: String, screen: AppScreen)] = [
         ("Trip Hub", "airplane", .tripHub),
         ("Personal Expenses", "creditcard", .personalExpensesHub),
@@ -22,7 +22,7 @@ struct HomeView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-// MARK: Main Body
+// MARK: - Main Body
     var body: some View {
         VStack {
             Text("Personal Spending Manager")                           // Title up top

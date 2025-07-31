@@ -10,7 +10,7 @@ import SwiftUI
 struct ReportHubView: View {
     @EnvironmentObject var navigationManager: NavigationManager
 
-// MARK: Buttons, Icons and routing
+// MARK: - Buttons, Icons and routing
     let items: [(label: String, icon: String, screen: AppScreen)] = [
         ("Generate New Report", "doc.fill", .settings),
         ("Organise Reports", "folder", .profile),
@@ -22,7 +22,7 @@ struct ReportHubView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-// MARK: Body of View
+// MARK: - Body of View
     var body: some View {
         VStack {
             Text("Report Hub")
