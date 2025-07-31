@@ -11,6 +11,9 @@ struct AccountManagerView: View {
     @StateObject private var store = AccountStore()
     @State private var editingAccount: Account?
     @State private var newName = ""
+    
+    @State private var showDeleteAlert = false
+    @State private var accountToDelete: Account? = nil
 
     var body: some View {
         VStack(spacing: 16) {
@@ -34,10 +37,26 @@ struct AccountManagerView: View {
                             newName = account.name
                         },
                         onDelete: {
-                            store.deleteAccount(account)
+                            accountToDelete = account
+                            showDeleteAlert = true
                         }
                     )
                 }
+            }
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(
+                    title: Text("Delete Account"),
+                    message: Text("Are you sure you want to delete this account?"),
+                    primaryButton: .destructive(Text("Delete")) {
+                        if let account = accountToDelete {
+                            store.deleteAccount(account)
+                        }
+                        accountToDelete = nil
+                    },
+                    secondaryButton: .cancel {
+                        accountToDelete = nil
+                    }
+                )
             }
 
             Spacer()

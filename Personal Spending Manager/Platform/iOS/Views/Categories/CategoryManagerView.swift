@@ -13,6 +13,9 @@ struct CategoryManagerView: View {
     @State private var editingCategory: Category?
     @State private var newName = ""
 
+    @State private var showDeleteAlert = false
+    @State private var categoryToDelete: Category? = nil
+    
     var body: some View {
         VStack(spacing: 16) {
             // Header
@@ -35,12 +38,27 @@ struct CategoryManagerView: View {
                             newName = category.name
                         },
                         onDelete: {
-                            store.deleteCategory(category)
+                            categoryToDelete = category
+                            showDeleteAlert = true
                         }
                     )
                 }
             }
-
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(
+                    title: Text("Delete Category"),
+                    message: Text("Are you sure you want to delete this Category?"),
+                    primaryButton: .destructive(Text("Delete")) {
+                        if let category = categoryToDelete {
+                            store.deleteCategory(category)
+                        }
+                        categoryToDelete = nil
+                    },
+                    secondaryButton: .cancel {
+                        categoryToDelete = nil
+                    }
+                )
+            }
             Spacer()
 
             // Action Buttons

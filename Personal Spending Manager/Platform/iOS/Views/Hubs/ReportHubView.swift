@@ -12,8 +12,8 @@ struct ReportHubView: View {
 
 // MARK: - Buttons, Icons and routing
     let items: [(label: String, icon: String, screen: AppScreen)] = [
-        ("Generate New Report", "doc.fill", .settings),
-        ("Organise Reports", "folder", .profile),
+        ("New Report", "doc.fill", ._settings),
+        ("Edit Reports", "folder", .profile),
         ("Delete Reports", "trash", .reportsHub)
                                                                 // Add more screens here as your hub grows
     ]
@@ -27,7 +27,10 @@ struct ReportHubView: View {
         VStack {
             Text("Report Hub")
                 .font(.largeTitle)
-                .padding()
+                .fontWeight(.medium)
+                .padding(.top)
+            
+                Spacer()
             
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(items, id: \.label) { item in

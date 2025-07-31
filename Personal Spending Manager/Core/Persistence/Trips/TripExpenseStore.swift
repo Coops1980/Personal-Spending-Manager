@@ -12,7 +12,7 @@ class TripExpenseStore: ObservableObject {
         didSet { save() }
     }
     
-    private let filename = "PersonalSpendings.json"
+    private let filename = "TripExpenses.json"
     
     init() {
         load()

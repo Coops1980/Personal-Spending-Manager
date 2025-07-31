@@ -13,9 +13,9 @@ struct TripHubView: View {
 
 // MARK: - Buttons, Icons and routing
     let items: [(label: String, icon: String, screen: AppScreen)] = [
-        ("Edit Trip", "aeroplane.fill", .settings)                  //To be changed when trips are made
-        
-                                                           
+        ("Create Trip", "airplane.departure", .homeview),
+        ("Edit Trip", "airplane", ._settings)                  //To be changed when trips are made
+    
     ]
 
     let columns = [
@@ -29,7 +29,10 @@ struct TripHubView: View {
         VStack {
             Text("Trip Hub")
                 .font(.largeTitle)
-                .padding()
+                .fontWeight(.medium)
+                .padding(.top)
+            
+                Spacer()
             
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(items, id: \.label) { item in

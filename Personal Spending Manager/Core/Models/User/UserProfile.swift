@@ -6,6 +6,15 @@
 //
 import Foundation
 
+enum Currency: String, CaseIterable, Codable {
+    case GBP = "£"
+    case USD = "$"
+    case EUR = "€"
+    case JPY = "¥"
+    case AUD = "A$"
+                            // Add more if needed
+}
+
 struct UserProfile: Codable, Equatable {
     var title: String
     var firstName: String
@@ -15,5 +24,6 @@ struct UserProfile: Codable, Equatable {
     var mobileNumber: String
     var employeeNumber: String
     var misc: String
-    var monthlyBudget: Double?              //Sets the amount for personal spending calcs
+    var monthlyBudget: Double?
+    var defaultCurrency: Currency = .GBP    // New field for currency preference
 }

@@ -10,13 +10,14 @@ import Foundation
 
 enum AppScreen: Hashable {
     case homeview
-    case settings
+    case _settings
     case profile
     case tripHub
     case personalExpensesHub
     case reportsHub
     case accounts
     case _category
+    case personalspending
     
     
 }

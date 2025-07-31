@@ -13,9 +13,9 @@ struct HomeView: View {
 // MARK: - Buttons, Icons and routing
     let items: [(label: String, icon: String, screen: AppScreen)] = [
         ("Trip Hub", "airplane", .tripHub),
-        ("Personal Expenses", "creditcard", .personalExpensesHub),
+        ("Spending", "creditcard", .personalExpensesHub),
         ("Reports", "doc", .reportsHub),
-        ("Settings", "gearshape.fill", .settings)
+        ("Settings", "gearshape.fill", ._settings)
     ]
 
     let columns = [

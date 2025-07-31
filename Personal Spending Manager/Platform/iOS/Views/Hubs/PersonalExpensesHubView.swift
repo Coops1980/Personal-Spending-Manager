@@ -13,7 +13,7 @@ struct PersonalExpensesHub: View {
 
 // MARK: - Buttons, Icons and routing
     let items: [(label: String, icon: String, screen: AppScreen)] = [
-        ("Add Spending", "creditcard.fill", .settings),
+        ("Add Spending", "creditcard.fill", .personalspending),
         ("Edit Spending", "creditcard", .profile),
         ("Report Hub", "doc", .reportsHub)
                                                                 // Add more screens here as your hub grows
@@ -28,8 +28,10 @@ struct PersonalExpensesHub: View {
         VStack(spacing: 20) {
             Text("Personal Spending Hub")
                 .font(.title)
-                .fontWeight(.bold)
+                .fontWeight(.medium)
                 .padding(.top)
+            
+                Spacer()
 
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(items, id: \.label) { item in
@@ -46,8 +48,6 @@ struct PersonalExpensesHub: View {
                 }
             }
             .padding(.horizontal)
-
-            Spacer()
         }
     }
 }

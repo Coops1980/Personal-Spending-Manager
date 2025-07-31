@@ -16,9 +16,9 @@ struct PersonalSpending: Identifiable, Codable, Equatable {
     var account: String
     var photoFilename: String? = nil
     var misc: String
+    var note: String
 
-    // ✅ Custom Initializer
-    init(
+    init(                           // Custom Initializer
         id: UUID = UUID(),
         date: Date = Date(),
         item: String,
@@ -27,7 +27,8 @@ struct PersonalSpending: Identifiable, Codable, Equatable {
         category: String = "",
         account: String = "",
         photoFilename: String? = nil,
-        misc: String
+        misc: String,
+        note: String
     ) {
         self.id = id
         self.date = date
@@ -38,5 +39,6 @@ struct PersonalSpending: Identifiable, Codable, Equatable {
         self.account = account
         self.photoFilename = photoFilename
         self.misc = misc
+        self.note = note
     }
 }

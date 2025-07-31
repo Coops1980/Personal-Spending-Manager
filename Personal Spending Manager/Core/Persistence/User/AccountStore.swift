@@ -11,7 +11,7 @@ import Combine
 
 class AccountStore: ObservableObject {
     @Published var accounts: [Account] = []
-
+    
     private let localStorageKey = "accountList"
 
     init() {

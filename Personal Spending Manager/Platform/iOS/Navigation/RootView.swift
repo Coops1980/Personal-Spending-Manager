@@ -18,7 +18,7 @@ struct RootView: View {
                     switch screen {
                     case .homeview:
                         HomeView()
-                    case .settings:
+                    case ._settings:
                         SettingsHub()
                     case .profile:
                         ProfileView()
@@ -32,6 +32,8 @@ struct RootView: View {
                         AccountManagerView()
                     case ._category:
                         CategoryManagerView()
+                    case .personalspending:
+                        PersonalSpendingFormView()
                     }
                 }
         }

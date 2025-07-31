@@ -29,7 +29,8 @@ struct SettingsHub: View {
         VStack(spacing: 20) {
             Text("Settings")
                 .font(.largeTitle)
-                .padding(.top, 32)
+                .fontWeight(.medium)
+                .padding(.top)
 
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(items, id: \.label) { item in
