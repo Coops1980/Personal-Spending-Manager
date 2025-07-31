@@ -8,10 +8,14 @@
 import SwiftUI
 
 @main
-struct Personal_Spending_ManagerApp: App {
+struct PersonalSpendingManagerApp: App {
+    @StateObject private var navigationManager = NavigationManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environmentObject(navigationManager)
         }
     }
 }
+
